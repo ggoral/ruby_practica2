@@ -10,6 +10,7 @@ fibonacci = Enumerator.new do |caller|
 end
 
 sum = 0
+#El termino 33 es el que supera los 5 millones por lo tanto, por lo tanto con 16 iteraciones deberia funcionar.
 16.times do
   sum += fibonacci.next 
   puts fibonacci.next
