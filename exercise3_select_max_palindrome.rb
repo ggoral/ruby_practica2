@@ -8,24 +8,24 @@ def is_palindrome? number
 end
 
 my_enum = Enumerator.new do |caller|
-    i1, i2 = 999 , 999
-    loop do
-        caller.yield i1 * i2
-        i1 -= 1
-        if i1 == 100
-          i1 =  999
-          i2 -= 1
-        end
-        break if i2 < 100
+  i1, i2 = 999 , 999
+  loop do
+    caller.yield i1 * i2
+    i1 -= 1
+    if i1 == 100
+      i1 =  999
+      i2 -= 1
     end
+    break if i2 < 100
+  end
 end
 
 def infinite_select(enum, &block)
-    Enumerator.new do |caller|
-        enum.each do |value|
-            caller.yield(value) if block.call(value)
-        end
+  Enumerator.new do |caller|
+    enum.each do |value|
+      caller.yield(value) if block.call(value)
     end
+  end
 end
 
 p infinite_select(my_enum) {|value| is_palindrome? value }.max
