@@ -13,7 +13,7 @@ my_enum = Enumerator.new do |caller|
     caller.yield i1 * i2
     i1 -= 1
     if i1 == 100
-      i1 =  999
+      i1 = 999
       i2 -= 1
     end
     break if i2 < 100

@@ -17,14 +17,14 @@ end
 #Resolucion con Enumerator
 
 def list_enumerator(lower_bound=1, upper_bound = 1000)
-   naturals = Enumerator.new do |caller|
-       i1 = lower_bound
-       loop do
-           caller.yield i1
-           i1 += 1
-       end
-   end
-   infinite_select(naturals) {|val| val % 3 == 0 || val % 5 == 0}.first(upper_bound)
+  naturals = Enumerator.new do |caller|
+    i1 = lower_bound
+    loop do
+      caller.yield i1
+      i1 += 1
+    end
+  end
+  infinite_select(naturals) {|val| val % 3 == 0 || val % 5 == 0}.first(upper_bound)
 end
 
 def infinite_select(enum, &block)
