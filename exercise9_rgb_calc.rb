@@ -21,3 +21,6 @@ def rgb_calc_coef(a_rgb, other_rgb)
   blue = a_rgb[:blue] * other_rgb[:blue]
   red + green + blue
 end
+
+puts rgb_calc_coef(my_rgb,coefficients)
+
