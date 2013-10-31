@@ -5,11 +5,10 @@
 
 require 'prime'
 
-primes = Prime.next
-3.times {puts primes.next}
 sum = 0
-loop do
-  sum += primes.next 
-  break if sum >= 10
+Prime.instance.each do |prime|
+  break if prime >=2_000_000
+  sum += prime
 end
+puts sum
   
