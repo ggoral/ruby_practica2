@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # coding: utf-8
 
-require_relative 'ejercicio10.rb'
+require_relative 'exercise10_contact_manager.rb'
 require 'minitest/autorun'
 
 class TestEjercicio10 < Minitest::Test
