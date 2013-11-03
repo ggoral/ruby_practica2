@@ -1,17 +1,10 @@
 #!/usr/bin/env ruby
 # coding: utf-8
 
-#require_relative 'csv_reader'
+require_relative 'contact_manager'
 
+cm = Contact_manager.new
 
-#reader = CsvReader.new
-#ARGV.each do |csv_file_name|
-#    STDERR.puts "Processing #{csv_file_name}"
-#    reader.read_in_csv_data(csv_file_name)
-#end
-#puts "Total value = #{reader.total_value_in_stock}"
-
-# server.rb
 def parse_options
   options = {}
   case ARGV[1]
@@ -30,18 +23,22 @@ when "write"
   STDOUT.puts "write a file on #{parse_options.inspect}"
 when "list"
   STDOUT.puts "restart on #{parse_options.inspect}"
+  if parse_options[:f]
+    cm.read_in_csv_data(parse_options[:f])
+  else 
+    cm.read_in_csv_data("data_read.csv")
+  end
+  puts cm
 else
   STDOUT.puts <<-EOF
 Please provide command name
 
 Usage:
-  contact_cli read -f filename.csv
-  contact_cli write -f filename.csv
-  contact_cli list
-  server restart
+  contact_cli add      #add a contact
+  contact_cli del      #delete a contact, puts
+  contact_cli list     #list contacts
 
   options:
-    -f filename. Default: development
-    -d dwDEAMON, true or false. Default: true
+    -f filename. Default: contact_manager.csv
 EOF
 end
